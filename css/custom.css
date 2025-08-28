@@ -1,0 +1,107 @@
+:root {
+  /* 主色调：蓝紫色系（匹配夜空）+ 暖黄点缀（匹配灯光） */
+  --trans-light: rgba(220, 226, 250, 0.85); /* 浅淡蓝紫半透明（默认模式卡片背景） */
+  --trans-dark: rgba(15, 20, 40, 0.85);    /* 深靛蓝半透明（深色模式卡片背景） */
+  --border-style: 1px solid rgba(130, 140, 200, 0.3); /* 淡蓝紫边框 */
+  --backdrop-filter: blur(8px) saturate(120%); /* 稍强模糊增强沉浸感 */
+  
+  /* 新增辅助色：暖黄色（匹配灯光） */
+  --accent-warm: rgba(255, 210, 100, 0.8); /* 暖光色 */
+}
+
+/* 首页文章卡片 */
+#recent-posts > .recent-post-item {
+  background: var(--trans-light);
+  backdrop-filter: var(--backdrop-filter);
+  border-radius: 25px;
+  border: var(--border-style);
+  /* 增加轻微阴影增强层次感 */
+  box-shadow: 0 4px 15px rgba(10, 15, 30, 0.1);
+}
+
+/* 首页侧栏卡片 */
+#aside-content .card-widget {
+  background: var(--trans-light);
+  backdrop-filter: var(--backdrop-filter);
+  border-radius: 18px;
+  border: var(--border-style);
+}
+
+/* 文章页、归档页、普通页面 */
+div#post,
+div#page,
+div#archive {
+  background: var(--trans-light);
+  backdrop-filter: var(--backdrop-filter);
+  border: var(--border-style);
+  border-radius: 20px;
+}
+
+/* 夜间模式适配（与夜景更协调） */
+[data-theme="dark"] #recent-posts > .recent-post-item,
+[data-theme="dark"] #aside-content .card-widget,
+[data-theme="dark"] div#post,
+[data-theme="dark"] div#archive,
+[data-theme="dark"] div#page {
+  background: var(--trans-dark);
+  /* 深色模式下边框更淡 */
+  border: 1px solid rgba(100, 110, 180, 0.2);
+}
+
+/* 夜间模式页脚页头优化 */
+[data-theme="dark"] #footer::before,
+[data-theme="dark"] #page-header::before {
+  background: transparent !important;
+}
+
+/* 阅读模式（暖色调突出，匹配灯光） */
+.read-mode #aside-content .card-widget,
+.read-mode div#post {
+  background: rgba(250, 245, 230, 0.85) !important; /* 暖白底色 */
+  border-color: rgba(255, 210, 100, 0.3) !important; /* 暖黄边框 */
+}
+
+/* 夜间模式下的阅读模式 */
+[data-theme="dark"] .read-mode #aside-content .card-widget,
+[data-theme="dark"] .read-mode div#post {
+  background: rgba(20, 25, 50, 0.95) !important; /* 深夜空色 */
+  color: #e0e5ff; /* 淡蓝紫文字，不刺眼 */
+  border-color: rgba(130, 140, 200, 0.4) !important;
+}
+
+/* 额外优化：链接和强调色匹配暖光 */
+a {
+  color: #d4a024; /* 暖金色链接 */
+}
+a:hover {
+  color: #ffc857; /* 亮黄色 hover 效果 */
+}
+
+/* 全局宽度 */
+.layout {
+    max-width: 1300px;
+  }
+  
+  /* 侧边卡片栏宽度 */
+  .aside-content {
+    max-width: 318px;
+    min-width: 300px;
+  }
+  
+  /* 平板尺寸自适应(不启用侧边栏宽度限制) */
+  @media screen and (max-width: 900px) {
+    .aside-content {
+      max-width: none !important;
+      padding: 0 5px 0 5px;
+    }
+  }
+  /* 除了首页以外其他页面隐藏卡片，并采用宽屏显示 */
+#archive,
+#page,
+#category,
+#tag {
+  width: 100%;
+}
+.page:not(.page.home) .aside-content {
+  display: none;
+}

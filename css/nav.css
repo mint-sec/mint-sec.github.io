@@ -1,0 +1,46 @@
+/* 一级菜单居中 */
+#nav .menus_items {
+  position: absolute !important;
+  width: fit-content !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+/* 子菜单横向展示 */
+#nav .menus_items .menus_item:hover .menus_item_child {
+  display: flex !important;
+}
+
+/* 调整有子菜单的元素位置 */
+.menus_items .menus_item:nth-child(2) .menus_item_child {
+  left: -125px;
+}
+
+/* 加高导航栏 */
+#nav {
+  position: absolute;
+  top: 0;
+  z-index: 90;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+  width: 100%;
+  height: 60px;
+  font-size: 1.6em; /* 基础字体放大 */
+  opacity: 0;
+  transition: all .5s;
+  font-family: 'Comic Sans MS', '幼圆', 'Yuanti SC', cursive, sans-serif;
+  letter-spacing: 0.6px;
+  overflow: visible;
+}
+
+/* 重点：增强选择器优先级，确保网站名称额外放大 */
+#nav #blog-info .site-name {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  font-weight: bold;
+  font-size: 1.6em !important; /* 显著放大（相对于父元素的1.7em，实际为1.7×1.4=2.38em） */
+  /* 可选：增加文字与其他元素的区分度 */
+  color: var(--theme-color) !important; /* 用主题色突出显示 */
+  margin: 0 5px; /* 增加左右间距避免拥挤 */
+}
