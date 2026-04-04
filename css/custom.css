@@ -105,3 +105,144 @@ a:hover {
 .page:not(.page.home) .aside-content {
   display: none;
 }
+
+.shuoshuo-page > .page-title {
+  text-align: center;
+}
+
+.shuoshuo-page__desc {
+  margin: 0 0 1.8rem;
+  color: var(--font-color);
+  opacity: 0.75;
+  text-align: center;
+}
+
+.shuoshuo-page #shuoshuo-posts {
+  margin-top: 1.2rem;
+}
+
+.shuoshuo-page #shuoshuo-posts > .recent-post-item:not(:first-child) {
+  margin-top: 20px;
+}
+
+.shuoshuo-page #shuoshuo-posts > .recent-post-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  height: 16.8em;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.shuoshuo-page #shuoshuo-posts > .recent-post-item:hover .post-bg {
+  transform: scale(1.08);
+}
+
+.shuoshuo-page #shuoshuo-posts > .recent-post-item .post_cover {
+  overflow: hidden;
+  width: 38%;
+  height: 100%;
+}
+
+.shuoshuo-page #shuoshuo-posts > .recent-post-item .post_cover .post-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.shuoshuo-page #shuoshuo-posts > .recent-post-item > .recent-post-info {
+  width: 62%;
+  padding: 0 40px;
+}
+
+.shuoshuo-page #shuoshuo-posts > .recent-post-item > .recent-post-info.no-cover {
+  width: 100%;
+  padding: 30px 40px;
+}
+
+.shuoshuo-page #shuoshuo-posts > .recent-post-item > .recent-post-info > .article-title {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--text-highlight-color);
+  font-size: 1.55em;
+  line-height: 1.4;
+  transition: all 0.2s ease-in-out;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.shuoshuo-page #shuoshuo-posts > .recent-post-item > .recent-post-info > .article-title:hover {
+  color: var(--theme-color);
+}
+
+.shuoshuo-page #shuoshuo-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
+  margin: 6px 0;
+  color: var(--font-color);
+  font-size: 0.9em;
+  opacity: 0.75;
+}
+
+.shuoshuo-page #shuoshuo-posts > .recent-post-item > .recent-post-info > .article-meta-wrap i {
+  margin: 0 4px 0 0;
+}
+
+.shuoshuo-page #shuoshuo-posts > .recent-post-item > .recent-post-info > .article-meta-wrap .article-meta-label {
+  padding-right: 4px;
+}
+
+.shuoshuo-page #shuoshuo-posts > .recent-post-item .content {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+@media screen and (max-width: 768px) {
+  .shuoshuo-page #shuoshuo-posts > .recent-post-item {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .shuoshuo-page #shuoshuo-posts > .recent-post-item .post_cover {
+    width: 100%;
+    height: 230px;
+  }
+
+  .shuoshuo-page #shuoshuo-posts > .recent-post-item > .recent-post-info {
+    width: 100%;
+    padding: 20px 20px 30px;
+  }
+
+  .shuoshuo-page #shuoshuo-posts > .recent-post-item > .recent-post-info.no-cover {
+    padding: 30px 20px;
+  }
+}
+
+.shuoshuo-card__link {
+  color: var(--theme-color);
+  font-weight: 600;
+}
+
+.shuoshuo-empty {
+  padding: 2.5rem 0 1rem;
+  text-align: center;
+  opacity: 0.78;
+}
+
+.shuoshuo-post__nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.shuoshuo-post__nav-link {
+  color: var(--theme-color);
+  font-weight: 600;
+}
+
+[data-theme="dark"] .shuoshuo-page #shuoshuo-posts > .recent-post-item {
+  background: rgba(18, 24, 42, 0.72);
+}
