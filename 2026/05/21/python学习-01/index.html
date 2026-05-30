@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>python学习_01 | mint1.</title><meta name="author" content="mint"><meta name="copyright" content="mint"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基于期末项目数据工坊对于python的学习什么是.pyc文件？ 在看到codex写的项目里有很多__pycache__文件夹，里面有些二进制的.pyc文件，他是python运行.py文件时所编译的字节码文件，若源码无变动的情况下后续运行就无需二次编译，解释器会直接执行.pyc文件 python中的.是什么？ 在pwn中总是会先io&#x3D;remote(xxxx,xxxx)来连远程靶机，后续io">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python学习_01">
+<meta property="og:url" content="https://mint-721.top/2026/05/21/python%E5%AD%A6%E4%B9%A0-01/index.html">
+<meta property="og:site_name" content="mint1.">
+<meta property="og:description" content="基于期末项目数据工坊对于python的学习什么是.pyc文件？ 在看到codex写的项目里有很多__pycache__文件夹，里面有些二进制的.pyc文件，他是python运行.py文件时所编译的字节码文件，若源码无变动的情况下后续运行就无需二次编译，解释器会直接执行.pyc文件 python中的.是什么？ 在pwn中总是会先io&#x3D;remote(xxxx,xxxx)来连远程靶机，后续io">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mint-721.top/images/Decoration/%E9%9B%85.jpg">
+<meta property="article:published_time" content="2026-05-21T07:57:55.000Z">
+<meta property="article:modified_time" content="2026-05-22T14:40:42.504Z">
+<meta property="article:author" content="mint">
+<meta property="article:tag" content="SDE">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mint-721.top/images/Decoration/%E9%9B%85.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mint-721.top/2026/05/21/python%E5%AD%A6%E4%B9%A0-01/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":3,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'python学习_01',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-05-22 22:40:42'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/nav.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/null/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/Decoration/%E9%9B%85.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="mint1."><span class="site-name">mint1.</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">python学习_01</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-05-21T07:57:55.000Z" title="发表于 2026-05-21 15:57:55">2026-05-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-22T14:40:42.504Z" title="更新于 2026-05-22 22:40:42">2026-05-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="python学习_01"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><!-- 保留你新增的顶部图元素--><div class="top-img gist" style="display: none;"></div><!-- 文章内容--><article class="post-content" id="article-container"><h1 id="基于期末项目数据工坊对于python的学习"><a href="#基于期末项目数据工坊对于python的学习" class="headerlink" title="基于期末项目数据工坊对于python的学习"></a>基于期末项目数据工坊对于python的学习</h1><p>什么是.pyc文件？</p>
+<p>在看到codex写的项目里有很多<code>__pycache__</code>文件夹，里面有些二进制的.pyc文件，他是python运行.py文件时所编译的字节码文件，若源码无变动的情况下后续运行就无需二次编译，解释器会直接执行.pyc文件</p>
+<p>python中的<code>.</code>是什么？</p>
+<p>在pwn中总是会先io&#x3D;remote(xxxx,xxxx)来连远程靶机，后续io.sendline(xxx)发payload，io.sendline是什么意思呢，也就是从io对象中取出它的sendline方法，python简单来说就是从左边的东西里面取出右边的东西</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Django 里也是同样的道理</span><br><span class="line">request.user                  # 从 request 对象里取出user 属性</span><br><span class="line">request.user.is_authenticated # 从 user 对象里取出 is_authenticated 属性</span><br><span class="line">login(request, user)           # 从导入的 django.contrib.auth 模块里取出 login 函数</span><br></pre></td></tr></table></figure>
+
+<p>那 django.contrib.auth.backends.ModelBackend 这串长的是什么？</p>
+<p>就是文件路径用 . 表示。等价于：</p>
+<p>django&#x2F;contrib&#x2F;auth&#x2F;backends.py  里面的  class ModelBackend</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>先把环境弄好，启动虚拟环境，加入git管理</p>
+<p>虚拟环境是独立于每一个项目的，所以会降低库之间的冲突问题，保证环境精准干净</p>
+<h3 id="venv"><a href="#venv" class="headerlink" title=".venv"></a>.venv</h3><p>创建并启用虚拟环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> E:\codex_project\python_class_project</span><br><span class="line">python -m venv .venv</span><br><span class="line">.\.venv\Scripts\Activate.ps1</span><br><span class="line">python -m pip install --upgrade pip</span><br></pre></td></tr></table></figure>
+
+<p>装库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django==4.2 pandas numpy matplotlib openpyxl xlrd==2.0.1</span><br></pre></td></tr></table></figure>
+
+<p>固化依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
+
+<p>退出虚拟环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
+<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit <span class="literal">-m</span> <span class="string">&quot;xxx&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来要把vscode的python编译器切为我创建的虚拟环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;Python: Select interpreter</span><br></pre></td></tr></table></figure>
+
+<p>选择到刚创建这个环境就好了</p>
+<h2 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">python_class_project/</span><br><span class="line">  ├── manage.py                    # Django 命令行入口</span><br><span class="line">  ├── db.sqlite3                   # SQLite 数据库文件（已生成）</span><br><span class="line">  ├── config/                      # Django 项目配置中心</span><br><span class="line">  │   ├── settings.py              # 全局配置（核心！）</span><br><span class="line">  │   ├── urls.py                  # 根路由表（核心！）</span><br><span class="line">  │   ├── wsgi.py                  # WSGI 部署入口</span><br><span class="line">  │   └── asgi.py                  # ASGI 部署入口</span><br><span class="line">  ├── apps/                        # 业务模块（三个 app）</span><br><span class="line">  │   ├── accounts/                # 用户系统</span><br><span class="line">  │   │   ├── views.py             # 登录/注册/登出视图（占位）</span><br><span class="line">  │   │   └── urls.py              # accounts 路由</span><br><span class="line">  │   ├── workspace/               # 工作区</span><br><span class="line">  │   │   ├── views.py             # 首页/仪表盘/工作区视图（占位）</span><br><span class="line">  │   │   └── urls.py              # workspace 路由</span><br><span class="line">  │   └── analytics/               # 数据分析（预留）</span><br><span class="line">  ├── templates/                   # HTML 模板目录</span><br><span class="line">  │   ├── base.html                # 母版页（所有页面继承它）</span><br><span class="line">  │   ├── accounts/</span><br><span class="line">  │   │   ├── login.html           # 登录页（占位）</span><br><span class="line">  │   │   └── register.html        # 注册页（占位）</span><br><span class="line">  │   └── workspace/</span><br><span class="line">  │       ├── home.html            # 首页</span><br><span class="line">  │       ├── dashboard.html       # 仪表盘（需登录）</span><br><span class="line">  │       ├── detail.html          # 工作区详情（需登录）</span><br><span class="line">  │       └── analysis.html        # 分析页（需登录）</span><br><span class="line">  ├── static/</span><br><span class="line">  │   └── css/</span><br><span class="line">  │       └── theme.css            # 暖色编辑风主题</span><br><span class="line">  ├── media/                       # 用户上传文件存储目录</span><br><span class="line">  ├── docs/                        # 项目文档</span><br><span class="line">  └── .venv/                       # Python 虚拟环境</span><br><span class="line"></span><br><span class="line">  关键认识：config/ 是&quot;大脑&quot;（配置 + 路由总控），apps/ 是三个&quot;功能模块&quot;，templates/ 是&quot;脸面&quot;，static/ 是&quot;衣服&quot;。</span><br></pre></td></tr></table></figure>
+
+<h2 id="Django的MTV架构"><a href="#Django的MTV架构" class="headerlink" title="Django的MTV架构"></a>Django的MTV架构</h2><p>config里的url.py匹配到后是如何跳转到workspace里的url.py的path函数和include函数,rqender是怎么匹配到templates里的home.html的明明只写了部分路径，什么是HttpResponse</p>
+<h2 id="settings-py五大关键配置"><a href="#settings-py五大关键配置" class="headerlink" title="settings.py五大关键配置"></a>settings.py五大关键配置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">问题1，首先config里的urls.py会接收到这个url然后使用path函数解析，解析前半部份然后跳转到workspace/urls.py匹配/adshboa</span><br><span class="line">  rd匹配上后调用dashboard_view函数来到了workspace/views.py调用dashboard_view,该函数使用render函数又来到/templates/workspace/dashboard.html调用模板，其中我之前疑惑的一点就是为什么没有写完整路径也能直接定位到模板，发现它是加入了django.contrib.auth，然后在settings.py的TEMPLATE中DIRS指定了baseDIR为templates，调用完view后html模板替换数据然后再经过css&quot;穿衣服&quot;就形成了我们看到的页面</span><br><span class="line"></span><br><span class="line">问题2：STATIC_URL是指向的/static是程序员设置的静态数据，不会明显影响加载时间，MEDIA_ROOT指的是用户上传的文件放置的位置，是随用户使用动态增长的，会影响页面响应速度，加static是为了让页面运行更快</span><br><span class="line"></span><br><span class="line">问题3：INSTALLED_APPS里注册的django.contrib.auth和django.contrib.sessions本质上是因为django是插件形的只有先注册django才会去扫描应用他们，然后去调用view或者urls这类脚本，他们的关系的话不太清楚</span><br><span class="line"></span><br><span class="line">问题4：我觉得runsercver是把服务彻底拉起来然后放到我们指定的域名端口，它会启动django然后进而启动整个项目，然后migrate是用来初始数据库字段的，我们不是在django中定义了很多类来替代直接写sql吗，migrate就通过识别这些类建表添加字段，如果不执行migrate直接runserver就会导致没有数据库然后导致页面没有数据</span><br><span class="line"></span><br><span class="line">问题5：这个问题有点卡壳，我觉得这个装饰器的作用是用来实现分用户的功能的，也就是说每个用户登录后都有一个自己的login然后通过匹配到这个login来对应具体的url</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">Phase 2 闭卷口述测验</span><br><span class="line"></span><br><span class="line">▎ 共 5 题，满分 100 分，过关阈值 80 分。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">Q1（20分）：注册链路 + 密码哈希</span><br><span class="line"></span><br><span class="line">从用户在注册页输入 用户名=bob, 密码=SafePass123! 点提交，到数据库 auth_user</span><br><span class="line">表里出现一条新记录。请口述每一步发生了什么，并重点解释：(a) form.save() 对密码做了什么处理？(b)</span><br><span class="line">为什么处理后的结果无法反推原始密码？</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">Q2（20分）：登录链路 + Session</span><br><span class="line"></span><br><span class="line">用户输入正确的用户名和密码提交登录。请从 form.is_valid() 开始，口述后续完整链路，包括：(a) authenticate()</span><br><span class="line">怎么验证密码？(b) login() 在数据库和浏览器分别写了什么？(c) 用户刷新页面后，Django 怎么知道&quot;这个人已经登录了&quot;？</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">Q3（20分）：CSRF 防护</span><br><span class="line"></span><br><span class="line">请用&quot;攻击者视角 → Django 防御视角&quot;的方式：(a) 描述 CSRF 攻击的具体场景（攻击者怎么利用你已登录的状态？）(b) Django 的 &#123;%</span><br><span class="line">csrf_token %&#125; 生成了什么？存在哪两个地方？(c) 提交 POST 时，Django 怎么决定放行还是 403？</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">Q4（20分）：退出与注销</span><br><span class="line"></span><br><span class="line">(a) 退出按钮为什么必须用 &lt;form method=&quot;post&quot;&gt; 而不是 &lt;a href=&quot;...&quot;&gt;？(b) logout() 在数据库里做了什么操作？(c)</span><br><span class="line">注销（deactivate）和退出（logout）有什么区别？注销后这个 User 还能不能重新登录？</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">Q5（20分）：@login_required 与安全重定向</span><br><span class="line"></span><br><span class="line">(a) 未登录访问 /dashboard/ 时，@login_required 做了什么？URL 里多了什么参数？(b) 攻击者如何利用 ?next=</span><br><span class="line">参数进行钓鱼攻击？(c) get_safe_redirect 函数怎么判断一个 URL 是否安全？不安全的 URL 最后跳到哪里？</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">准备好了就开始作答。</span><br></pre></td></tr></table></figure>
+
+</article><!-- 原有功能：版权信息--><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://mint-721.top">mint</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://mint-721.top/2026/05/21/python%E5%AD%A6%E4%B9%A0-01/">https://mint-721.top/2026/05/21/python%E5%AD%A6%E4%B9%A0-01/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://mint-721.top" target="_blank">mint1.</a>！</span></div></div><!-- 原有功能：标签和分享--><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SDE/">SDE</a><a class="post-meta__tags" href="/tags/Web/">Web</a><a class="post-meta__tags" href="/tags/python/">python</a></div><div class="post_share"><div class="social-share" data-image="/images/Decoration/%E9%9B%85.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><!-- 原有功能：打赏--><!-- 原有功能：广告--><!-- 关键：上一篇/下一篇导航（分页功能）--><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/05/28/agent%E4%BD%BF%E7%94%A8%E7%9B%B8%E5%85%B3%E8%AE%B0%E5%BD%95/" title="agent使用相关记录"><img class="cover" src="/images/Decoration/%E9%9B%85.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">agent使用相关记录</div></div></a></div><div class="next-post pull-right"><a href="/2026/04/13/vim-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E6%8C%87%E4%BB%A4/" title="Vim 详细使用指令"><img class="cover" src="/images/Decoration/%E9%9B%85.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Vim 详细使用指令</div></div></a></div></nav><!-- 原有功能：相关文章--><!-- 原有功能：评论区--></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/1.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">mint</div><div class="author-info__description">pwn小白</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/null/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/mint-sec"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">this is my blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E6%95%B0%E6%8D%AE%E5%B7%A5%E5%9D%8A%E5%AF%B9%E4%BA%8Epython%E7%9A%84%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">基于期末项目数据工坊对于python的学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#venv"><span class="toc-number">1.1.1.</span> <span class="toc-text">.venv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git"><span class="toc-number">1.1.2.</span> <span class="toc-text">git</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">项目目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django%E7%9A%84MTV%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text">Django的MTV架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#settings-py%E4%BA%94%E5%A4%A7%E5%85%B3%E9%94%AE%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.</span> <span class="toc-text">settings.py五大关键配置</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/05/30/docker%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/" title="docker深入学习"><img src="/images/Decoration/%E9%9B%85.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker深入学习"/></a><div class="content"><a class="title" href="/2026/05/30/docker%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/" title="docker深入学习">docker深入学习</a><time datetime="2026-05-30T05:34:40.000Z" title="发表于 2026-05-30 13:34:40">2026-05-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/28/agent%E5%AD%A6%E4%B9%A0/" title="agent学习"><img src="/images/Decoration/%E9%9B%85.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="agent学习"/></a><div class="content"><a class="title" href="/2026/05/28/agent%E5%AD%A6%E4%B9%A0/" title="agent学习">agent学习</a><time datetime="2026-05-28T13:30:18.000Z" title="发表于 2026-05-28 21:30:18">2026-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/" title="数据结构学习"><img src="/images/Decoration/%E9%9B%85.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构学习"/></a><div class="content"><a class="title" href="/2026/05/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/" title="数据结构学习">数据结构学习</a><time datetime="2026-05-28T13:30:04.000Z" title="发表于 2026-05-28 21:30:04">2026-05-28</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2026 By mint</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><div class="beian-footer">
+  <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">滇ICP备2026007075号-1</a>
+  <span class="footer-separator">|</span>
+  <img src="/images/备案图标.png" alt="公安备案图标" style="height:16px;vertical-align:middle;margin-right:4px;">
+  <a href="https://beian.mps.gov.cn/#/query/webSearch?code=53250302000460" target="_blank" rel="noopener noreferrer">滇公网安备53250302000460号</a>
+</div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/10/10/第一篇文章/" alt=""><img width="48" height="48" src="/images/Decoration/雅.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-10</span><a class="blog-slider__title" href="2024/10/10/第一篇文章/" alt="">第一篇文章</a><div class="blog-slider__text">第一篇文章！</div><a class="blog-slider__button" href="2024/10/10/第一篇文章/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2025/04/15/函数合集/" alt=""><img width="48" height="48" src="/images/Decoration/雅.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-04-15</span><a class="blog-slider__title" href="2025/04/15/函数合集/" alt="">函数合集</a><div class="blog-slider__text">这篇文章用于记录函数的详细信息</div><a class="blog-slider__button" href="2025/04/15/函数合集/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2025/04/05/赛题合集/" alt=""><img width="48" height="48" src="/images/Decoration/雅.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-04-05</span><a class="blog-slider__title" href="2025/04/05/赛题合集/" alt="">赛题合集</a><div class="blog-slider__text">赛题大合集有好多次比赛的</div><a class="blog-slider__button" href="2025/04/05/赛题合集/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/12/09/汇总/" alt=""><img width="48" height="48" src="/images/Decoration/雅.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-12-09</span><a class="blog-slider__title" href="2024/12/09/汇总/" alt="">汇总</a><div class="blog-slider__text">什么都记的大杂烩</div><a class="blog-slider__button" href="2024/12/09/汇总/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>
